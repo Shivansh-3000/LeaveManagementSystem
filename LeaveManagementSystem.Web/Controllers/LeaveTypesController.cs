@@ -10,9 +10,12 @@ using LeaveManagementSystem.Web.Models.LeaveTypes;
 using AutoMapper;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using LeaveManagementSystem.Web.Services;
+using Microsoft.AspNetCore.Authorization;
+using LeaveManagementSystem.Web.Common;
 
 namespace LeaveManagementSystem.Web.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController(ILeaveTypesService _leaveTypesService) : Controller
     {
         private const string NameExistsValidationMessage = "This leave type exists in the database";
